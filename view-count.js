@@ -27,7 +27,7 @@ window.onscroll = function() {
 		  	}
 		} while (ele = ele.offsetParent);
 
-		var windowHeight = document.body.clientHeight;
+		var windowHeight = getWindowHeight();
 		var currentScroll = document.body.scrollTop;
 		if ((offsetTop >= currentScroll  && offsetTop <= (currentScroll + windowHeight)) ||
 		  	offsetTop <= currentScroll && currentScroll <= (offsetTop + eleHeight)) {
@@ -62,4 +62,19 @@ function showResult() {
 		html += eleId + " - " + mapData[eleId].count + " - " + mapData[eleId].time + "<br>";
 	}
 	document.getElementById('result').innerHTML = html;
+}
+
+function getWindowHeight() {
+	var myHeight = 0;
+	if( typeof(window.innerHeight) == 'number' ) {
+		//Non-IE
+		myHeight = window.innerHeight;
+	} else if(document.documentElement && (document.documentElement.clientHeight)) {
+		//IE 6+ in 'standards compliant mode'
+		myHeight = document.documentElement.clientHeight;
+	} else if(document.body && (document.body.clientHeight)) {
+		//IE 4 compatible
+		myHeight = document.body.clientHeight;
+	}
+	return myHeight;
 }
