@@ -13,7 +13,7 @@ For the next update, Time4Div will be added one awesome feature, more intelligen
 
 Demo
 ------
-http://google.com
+http://cdpn.io/jrovs
 
 Usage
 ------
